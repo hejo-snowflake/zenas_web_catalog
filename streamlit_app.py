@@ -17,7 +17,7 @@ my_catalog = pandas.DataFrame(my_cur.fetchall())
 
 
 # add widget for sweatshirt selection
-sweater_selected = streamlit.selectbox("Pick an item", my_catalog[0].values.tolist())
+sweater_selected = streamlit.selectbox("Pick an item", list(my_catalog[0].values.tolist()))
 
 
 # get data matching the selected sweatshirt
@@ -29,7 +29,7 @@ my_sweater_data = my_cur.fetchone()
 streamlit.image(
     my_sweater_data[0],
     width=400,
-    caption= "Our warm, comfortable, ' + sweater_selected + ' sweatsuit!" 
+    caption= "Our warm, comfortable, " + sweater_selected + " sweatsuit!" 
 )
 
 
