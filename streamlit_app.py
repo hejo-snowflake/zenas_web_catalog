@@ -12,7 +12,7 @@ streamlit.title("Zena's Amazing Athleisure Catalog")
 # Snowflake-related functions
 def get_snowflake_data():
     with my_cnx.cursor() as my_cur:
-        my_cur.execute("SELECT * FROM catalog_for_website")
+        my_cur.execute("SELECT * FROM zenas_athleisure_db.products.catalog_for_website")
         return my_cur.fetchall() # all lines
 
 # get data
