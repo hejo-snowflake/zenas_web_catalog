@@ -16,4 +16,4 @@ def get_snowflake_data():
         return my_cur.fetchall() # all lines
 
 # add widget for sweatshirt selection
-sweater_selected = streamlit.select("Pick an item", list(get_snowflake_data.color_or_style))
+sweater_selected = streamlit.selectbox("Pick an item", list(get_snowflake_data.color_or_style))
