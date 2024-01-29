@@ -32,17 +32,14 @@ streamlit.image(
     caption= "Our warm, comfortable, " + sweater_selected + " sweatsuit!" 
 )
 
-streamlit.write( my_sweater_data)
-streamlit.write( my_sweater_data[1])
-
 # price
 streamlit.write('Price:', my_sweater_data[1])
 
 # available sizes
-streamlit.text('Sizes Available:', my_sweater_data[2])
+streamlit.write('Sizes Available:', my_sweater_data[2])
 
 # additions
-streamlit.text(my_sweater_data[3])
+streamlit.write(my_sweater_data[3])
 
 
 
