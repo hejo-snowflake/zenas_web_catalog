@@ -34,11 +34,13 @@ streamlit.image(
 
 
 # price
+streamlit.text('Price:', my_sweater_data[1])
 
 # available sizes
+streamlit.text('Sizes Available:', my_sweater_data[2])
 
 # additions
-
+streamlit.text('', my_sweater_data[3])
 
 
 
