@@ -7,11 +7,13 @@ from urllib.error import URLError
 
 streamlit.title("Zena's Amazing Athleisure Catalog")
 
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
-my_data_row = my_cur.fetchone()
-streamlit.text("Hello from Snowflake:")
-streamlit.text(my_data_row)
 
  
+# Snowflake-related functions
+def get_snowflake_data():
+    with my_cnx.cursor() as my_cur:
+        my_cur.execute("SELECT * FROM zenas_athleisure_db.products.catalog_for_website")
+        return my_cur.fetchall() # all lines
+
+# add widget for sweatshirt selection
+sweater_selected = streamlit.select("Pick an item", list(get_snowflake_data.color_or_style))
