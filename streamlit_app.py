@@ -21,7 +21,7 @@ sweater_selected = streamlit.selectbox("Pick an item", list(my_catalog[0].values
 
 
 # get data matching the selected sweatshirt
-my_cur.execute("SELECT direct_url, price, size_list, upsell_product_desc  FROM zenas_athleisure_db.products.catalog_for_website WHERE color_or_style = "+sweater_selected + ";")
+my_cur.execute("SELECT direct_url, price, size_list, upsell_product_desc  FROM zenas_athleisure_db.products.catalog_for_website WHERE color_or_style =  '" + sweater_selected + "';";")
 my_sweater_data = my_cur.fetchone()
 
 
