@@ -36,7 +36,7 @@ streamlit.write( my_sweater_data)
 streamlit.write( my_sweater_data[1])
 
 # price
-streamlit.text('Price:', my_sweater_data[1])
+streamlit.write('Price:', my_sweater_data[1])
 
 # available sizes
 streamlit.text('Sizes Available:', my_sweater_data[2])
