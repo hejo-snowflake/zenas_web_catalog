@@ -7,15 +7,12 @@ from urllib.error import URLError
 
 streamlit.title("Zena's Amazing Athleisure Catalog")
 
-
- 
 # get list f sweatshirts
-with my_cnx.cursor() as my_cur:
-    my_cur.execute("SELECT color_or_style FROM zenas_athleisure_db.products.catalog_for_website")
-    my_cur.fetchall() # all lines
-  	 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-    my_catalog = pandas.DataFrame(my_cur.fetchall())
-    my_cnx.close()
+my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+my_cur = my_cnx.cursor()
+my_cur.execute("SELECT color_or_style FROM zenas_athleisure_db.products.catalog_for_website")
+my_catalog = pandas.DataFrame(my_cur.fetchall())
+
 
 
 
@@ -24,13 +21,9 @@ sweater_selected = streamlit.selectbox("Pick an item", my_catalog[0].values.toli
 
 
 # get data matching the selected sweatshirt
-# get list f sweatshirts
-with my_cnx.cursor() as my_cur:
-    my_cur.execute("SELECT direct_url, price, size_list, upsell_product_desc  FROM zenas_athleisure_db.products.catalog_for_website WHERE color_or_style = "+sweater_selected + ";")
-    my_cur.fetchall() # all lines
-  	 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-    my_sweater_data = pandas.DataFrame(my_cur.fetchone())
-    my_cnx.close()
+my_cur.execute("SELECT direct_url, price, size_list, upsell_product_desc  FROM zenas_athleisure_db.products.catalog_for_website WHERE color_or_style = "+sweater_selected + ";")
+my_sweater_data = my_cur.fetchone()
+
 
 # show picture of sweatshirt
 streamlit.image(
@@ -45,3 +38,9 @@ streamlit.image(
 # available sizes
 
 # additions
+
+
+
+
+# close connection
+my_cnx.close()
