@@ -15,5 +15,8 @@ def get_snowflake_data():
         my_cur.execute("SELECT * FROM zenas_athleisure_db.products.catalog_for_website")
         return my_cur.fetchall() # all lines
 
+# get data
+my_catalog = pandas.DataFrame(get_snowflake_data())
+
 # add widget for sweatshirt selection
-sweater_selected = streamlit.selectbox("Pick an item", list(get_snowflake_data.color_or_style))
+sweater_selected = streamlit.selectbox("Pick an item", my_catalog[0].values.tolist())
